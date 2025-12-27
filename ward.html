@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>World of Kashif</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Amiri&family=Pacifico&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{
+  height:100%;
+  width:100%;
+  overflow:hidden;
+  font-family:'Montserrat',sans-serif;
+}
+
+/* ================= COMMON ================= */
+.screen{
+  display:none;
+  height:100vh;
+  width:100vw;
+  position:relative;
+  overflow:hidden;
+  padding:40px;
+}
+
+/* Floating elements */
+.floating{
+  position:absolute;
+  font-size:2rem;
+  animation:float 10s linear infinite;
+  opacity:.7;
+}
+@keyframes float{
+  from{transform:translateY(110vh) rotate(0deg)}
+  to{transform:translateY(-20vh) rotate(360deg)}
+}
+
+/* Gradient text animation */
+.gradient{
+  background:linear-gradient(270deg,#ff9ff3,#feca57,#48dbfb,#1dd1a1);
+  background-size:400% 400%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:flow 6s ease infinite;
+}
+@keyframes flow{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+/* ================= BUTTONS ================= */
+.arrow{
+  margin-top:22px;
+  font-size:1.6rem;
+  padding:12px 28px;
+  border:none;
+  border-radius:50px;
+  cursor:pointer;
+  background:linear-gradient(45deg,#ff9ff3,#feca57);
+  color:#fff;
+  font-weight:bold;
+  box-shadow:0 10px 20px rgba(0,0,0,.3);
+  transition: all 0.3s ease;
+}
+.arrow:hover{
+  transform:scale(1.15);
+  background:linear-gradient(45deg,#48dbfb,#1dd1a1);
+}
+
+/* ================= PAGE 1 ================= */
+#page1{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:radial-gradient(circle at top,#6c5ce7,#341f97);
+}
+
+.page1-wrap{
+  width:92%;
+  max-width:1100px;
+  display:flex;
+  align-items:center;
+  gap:24px;
+}
+
+/* TEXT */
+.page1-text{
+  flex:1;
+}
+.page1-text h1{
+  font-family:'Pacifico',cursive;
+  font-size:3.2rem;
+}
+.page1-text p{
+  font-family:'Amiri',serif;
+  font-size:1.55rem;
+  margin-top:10px;
+  color:#f1f2f6;
+  line-height:2rem;
+}
+
+/* IMAGE — transparent subject only */
+.page1-img{
+  flex:1;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  pointer-events:none;
+}
+.page1-img img{
+  width:300px;
+  max-width:90%;
+  /* Proper blending with background */
+  mix-blend-mode:multiply;
+  filter:drop-shadow(0 30px 50px rgba(0,0,0,.55)) brightness(1.05) contrast(1.05);
+  background:transparent;
+  border:none;
+  outline:none;
+  animation:imgFloat 4.5s ease-in-out infinite;
+}
+@keyframes imgFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-18px)}
+}
+
+/* ================= PAGE 2 ================= */
+#page2{
+  background:linear-gradient(135deg,#ff7675,#e84393);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  color:white;
+}
+#page2 h1{
+  font-family:'Pacifico',cursive;
+  font-size:3rem;
+}
+#page2 p{
+  margin-top:8px;
+  font-size:1.3rem;
+}
+
+/* Magic bubbles */
+.bubbles{
+  display:none;
+  margin-top:22px;
+  gap:14px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+.bubble{
+  padding:12px 22px;
+  background:rgba(255,255,255,.25);
+  border-radius:50px;
+  color:white;
+  font-weight:bold;
+  backdrop-filter:blur(6px);
+  animation:pop .5s ease;
+  cursor:pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+.bubble:hover{
+  transform:scale(1.2);
+  background:rgba(255,255,255,.5);
+}
+
+/* ================= PAGE 3 ================= */
+#page3{
+  background:linear-gradient(-45deg,#74b9ff,#a29bfe);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+#page3 h2{
+  font-family:'Pacifico',cursive;
+  font-size:2.6rem;
+}
+.question{
+  font-family:'Amiri',serif;
+  font-size:1.6rem;
+  color:#fff;
+  margin:18px 0;
+}
+input{
+  padding:12px;
+  width:80%;
+  max-width:460px;
+  border-radius:14px;
+  border:none;
+  font-size:1.15rem;
+  text-align:center;
+}
+
+/* ================= PAGE 4 ================= */
+#page4{
+  background:linear-gradient(135deg,#ffeaa7,#fab1a0);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+#page4 h2{
+  font-family:'Pacifico',cursive;
+  font-size:2.8rem;
+}
+#page4 p{
+  font-family:'Amiri',serif;
+  font-size:1.7rem;
+  opacity:0;
+  transition:2s;
+}
+.show{opacity:1}
+
+/* Mobile */
+@media(max-width:768px){
+  .page1-wrap{
+    flex-direction:column;
+    text-align:center;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div id="page1" class="screen">
+  <div class="page1-wrap">
+    <div class="page1-text">
+      <h1 class="gradient">Welcome to World of Kashif</h1>
+      <p>
+        تمہاری آمد سے یہ دنیا حسین ہوئی  
+        ہر لمحہ خوشیوں سے بھر گیا
+      </p>
+      <button class="arrow" onclick="go(2)">➡</button>
+    </div>
+    <div class="page1-img">
+      <img src="Untitled design.png" alt="Kashif">
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 2 -->
+<div id="page2" class="screen">
+  <h1 class="gradient">Let’s Fun 😈</h1>
+  <p>Avoid your magic words</p>
+
+  <button class="arrow" onclick="bubbles.style.display='flex'"><b>Click</b></button>
+
+  <div class="bubbles" id="bubbles">
+    <div class="bubble">sahi</div>
+    <div class="bubble">or</div>
+    <div class="bubble">g</div>
+    <div class="bubble">thek</div>
+    <div class="bubble">dushman</div>
+  </div>
+
+  <button class="arrow" onclick="go(3)">➡</button>
+</div>
+
+<!-- PAGE 3 -->
+<div id="page3" class="screen">
+  <h2 class="gradient">میں تمہیں جاننا چاہتا ہوں</h2>
+  <div class="question" id="q"></div>
+  <input id="ans" placeholder="اپنا جواب لکھیں">
+  <button class="arrow" onclick="nextQ()">➡</button>
+</div>
+
+<!-- PAGE 4 -->
+<div id="page4" class="screen">
+  <h2 class="gradient">Thanks for your cooperation</h2>
+  <button class="arrow" onclick="poem.classList.add('show')">➡</button>
+  <p id="poem">
+    وقت اور مہربانی سب سے قیمتی تحفے ہیں  
+    تمہارے وقت اور احساسات کا دل سے شکریہ
+  </p>
+</div>
+
+<script>
+const pages=[page1,page2,page3,page4];
+function go(n){
+  pages.forEach(p=>p.style.display='none');
+  pages[n-1].style.display='flex';
+}
+page1.style.display='flex';
+
+const questions=[
+"تمہاری نظر میں ہماری دوستی کی سب سے خوبصورت بات کیا ہے؟",
+"تمہارے خیال میں میں کون سا خواب ابھی پورا کرنا چاہتا ہوں؟",
+"تمہارے خیال میں میں سب سے زیادہ مزاحیہ کون سا کام کرتا ہوں؟",
+"100 دن کی باتوں میں تمہیں میرے بارے میں کیا اچھا لگا؟",
+"اگر ایک چیز بدلنی ہو تو کیا؟",
+"تم کس قسم کی شاعری پسند کرتی ہو؟"
+]
+let i=0;
+q.innerText=questions[i];
+
+function nextQ(){
+  if(!ans.value)return;
+  ans.value='';
+  i++;
+  if(i<questions.length) q.innerText=questions[i];
+  else go(4);
+}
+
+/* Floating emojis */
+document.querySelectorAll('.screen').forEach(p=>{
+  for(let i=0;i<14;i++){
+    let f=document.createElement('div');
+    f.className='floating';
+    f.innerText=['💖','⭐','🎈','❤️','✨'][Math.floor(Math.random()*5)];
+    f.style.left=Math.random()*100+'%';
+    f.style.animationDuration=6+Math.random()*6+'s';
+    p.appendChild(f);
+  }
+});
+</script>
+
+</body>
+</html>
